@@ -8,7 +8,7 @@
     angular.module('BlurAdmin.pages.taskdashboard', []).config(function($stateProvider) {
         $stateProvider
             .state('taskdashboard', {
-                url         : '/taskDashboard',
+                url         : '/',
                 templateUrl : 'app/pages/taskdashboard/task_dashboard.html',
                 title       : 'Task Dashboard',
                 sidebarMeta : {

@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-    angular.module('BlurAdmin.pages.taskdashboard').controller('TaskDashboardPieChartCtrl', function($scope, $timeout, baConfig, baUtil) {
+    angular.module('BlurAdmin.pages.taskdashboard').controller('overdueProjectCtrl', function($scope, $timeout, baConfig, baUtil) {
         var pieColor = baUtil.hexToRGB(baConfig.colors.defaultText, 0.2);
         $scope.charts = [{
                 color: pieColor,

@@ -1,10 +1,11 @@
-<taskdashboard-pie-chart></taskdashboard-pie-chart>
-
 <div class="row">
-    <div class="col-lg-6 col-md-12 col-sm-12" ba-panel ba-panel-title="Acquisition Channels" ba-panel-class="medium-panel traffic-panel">
-        <traffic-chart></traffic-chart>
+    <div class="col-lg-12 col-md-12 col-sm-12" ba-panel ba-panel-title="Overdue Project">
+        <overdue-project></overdue-project>
     </div>
-    <div class="col-lg-6 col-md-12 col-sm-12" ba-panel ba-panel-title="Animated" ba-panel-class="with-scroll">
-        <div ng-include="'app/pages/ui/progressBars/widgets/animated.html'"></div>
+    <div class="col-lg-4 col-md-12 col-sm-12" ba-panel ba-panel-title="Projects Per Owner" ba-panel-class="medium-panel traffic-panel">
+        <projects-per-owner></projects-per-owner>
+    </div>
+    <div class="col-lg-8 col-md-12 col-sm-12" ba-panel ba-panel-title="Project Progress" ba-panel-class="with-scroll">
+        <div ng-include="'app/pages/taskdashboard/projectProgress/projectProgress.html'"></div>
     </div>
 </div>
