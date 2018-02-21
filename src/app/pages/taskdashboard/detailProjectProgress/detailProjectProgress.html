@@ -4,7 +4,11 @@
     <section id="cd-timeline" class="cd-container cssanimations ">
         <div class="cd-timeline-block" ng-repeat="x in detailProjectProgress">
             <div class="cd-timeline-img">
-                <div class="kameleon-icon with-round-bg {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}"><img ng-src="{{ ( 'Clipboard-Plan' | kameleonImg )}}"></div>
+                <div class="kameleon-icon with-round-bg {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}">
+                    <!--<img ng-src="{{ ::( 'Clipboard-Plan' | kameleonImg )}}">-->
+                    <img ng-src="assets/img/task_scheduling.png"/>
+                    
+                </div>
             </div>
             <div class="cd-timeline-content {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}">
                 <h5>{{x.list_task}}</h5>
