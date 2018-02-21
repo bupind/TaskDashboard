@@ -2,3 +2,74 @@
 
 // injector
 // endinjector
+
+html {
+    body {
+        .panel {
+            &.panel-pp {
+                .panel-body {
+                    height: 400px;
+                    overflow: hidden;
+                    
+                    &:hover {
+                        overflow: auto;
+                    }
+                    
+                    .channels-block {
+                        margin-top: 30px;
+                    }
+                    
+                    .channels-info {
+                        display: inherit;
+                        width: auto;
+                        margin-left: 70px;
+                    }
+                    
+                    .bxrp {
+                        cursor: pointer;
+                    }
+                }
+            }
+            &.panel-op {
+                .panel-body {
+                    overflow-x: hidden;
+                    overflow-y: hidden;
+                    counter-reset: widthOP;
+                    
+                    &:hover {
+                        overflow-x: auto;
+                    }
+                    
+                    .pie-charts {
+                        max-height: 114px;
+                        overflow-x: hidden;
+                        overflow-y: hidden;
+                        width: auto;
+                        min-width: 300px;
+                        display: inline-flex;
+                        
+                        .pie-chart-item-container {
+                            width: 250px;
+                            counter-increment: widthOP;
+                        }
+                        
+                        .description {
+                            font-size: 13px;
+                            width: 60%;
+                        }
+                        
+                        .percent {
+                            &:after {
+                                content: 'days';
+                                font-size: 9px;
+                                vertical-align: baseline;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        
+    }
+}

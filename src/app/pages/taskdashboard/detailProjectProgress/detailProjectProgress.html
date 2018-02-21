@@ -1,0 +1,16 @@
+<!-- todo: remove whole block -->
+
+<div ba-panel ba-panel-title="<a type='button' class='text-primary' ui-sref='taskdashboard'>Back</a>">
+    <section id="cd-timeline" class="cd-container cssanimations ">
+        <div class="cd-timeline-block" ng-repeat="x in detailProjectProgress">
+            <div class="cd-timeline-img">
+                <div class="kameleon-icon with-round-bg {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}"><img ng-src="{{ ( 'Clipboard-Plan' | kameleonImg )}}"></div>
+            </div>
+            <div class="cd-timeline-content {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}">
+                <h5>{{x.list_task}}</h5>
+                <p>{{x.nama_project}}</p>
+                <span class="cd-date">{{x.status}}</span>
+            </div>
+        </div>
+    </section>
+</div>

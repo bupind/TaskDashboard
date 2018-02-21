@@ -16,7 +16,14 @@
                       order : 2,
                 },
                 controller  : 'TaskDashboardCtrl'
-            });
+            })
+            .state('taskdashboard.detailprojectprogress', {
+                url         : 'projectprogress/:id',
+                templateUrl : 'app/pages/taskdashboard/detailProjectProgress/detailProjectProgress.html',
+                title       : 'Detail Project Progress',
+                controller  : 'detailProjectProgressCtrl'
+            })
+        ;
     });
   
 })();

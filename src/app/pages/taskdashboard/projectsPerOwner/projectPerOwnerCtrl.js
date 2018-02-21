@@ -5,54 +5,125 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.pages.taskdashboard').controller('projectsPerOwnerCtrl',function ($scope, baConfig, colorHelper) {
-
+    angular.module('BlurAdmin.pages.taskdashboard').controller('projectsPerOwnerCtrl',function ($scope, baConfig, colorHelper,$http,apiBase) {
+        
         $scope.transparent = baConfig.theme.blur;
         var dashboardColors = baConfig.colors.dashboard;
-        $scope.doughnutData = {
-            labels: [
-                'Other',
-                'Search engines',
-                'Referral Traffic',
-                'Direct Traffic',
-                'Ad Campaigns'
-            ],
-            datasets: [
-                {
-                    data: [2000, 1500, 1000, 1200, 400],
-                    backgroundColor: [
-                        dashboardColors.white,
-                        dashboardColors.blueStone,
-                        dashboardColors.surfieGreen,
-                        dashboardColors.silverTree,
-                        dashboardColors.gossip
+        
+        $scope.getTotalProject = function(d){
+        
+            $http({
+                method      : "GET",
+                url         : apiBase + 'total_project.php',
+                dataType    : 'json',
+                headers     : { 
+                    'Content-Type'  : 'application/json',
+//                    'Authorization' : Authorization
+                }
+            })
+            .then(function success(R) {
+                
+                $scope.doughnutData = { 
+                    labels : [],
+                    datasets: [
+                        {
+                            data: [],
+                            backgroundColor: [
+                                dashboardColors.white,
+                                dashboardColors.blueStone,
+                                dashboardColors.surfieGreen,
+                                dashboardColors.silverTree,
+                                dashboardColors.gossip,
+                                dashboardColors.white,
+                                dashboardColors.blueStone,
+                                dashboardColors.surfieGreen,
+                                dashboardColors.silverTree,
+                                dashboardColors.gossip,
+                                dashboardColors.white,
+                                dashboardColors.blueStone,
+                                dashboardColors.surfieGreen,
+                                dashboardColors.silverTree,
+                                dashboardColors.gossip,
+                                dashboardColors.white,
+                                dashboardColors.blueStone,
+                                dashboardColors.surfieGreen,
+                                dashboardColors.silverTree,
+                                dashboardColors.gossip,
+                                dashboardColors.white,
+                                dashboardColors.blueStone,
+                                dashboardColors.surfieGreen,
+                                dashboardColors.silverTree,
+                                dashboardColors.gossip,
+                            ],
+                            hoverBackgroundColor: [
+                                colorHelper.shade(dashboardColors.white, 15),
+                                colorHelper.shade(dashboardColors.blueStone, 15),
+                                colorHelper.shade(dashboardColors.surfieGreen, 15),
+                                colorHelper.shade(dashboardColors.silverTree, 15),
+                                colorHelper.shade(dashboardColors.gossip, 15),
+                                colorHelper.shade(dashboardColors.white, 15),
+                                colorHelper.shade(dashboardColors.blueStone, 15),
+                                colorHelper.shade(dashboardColors.surfieGreen, 15),
+                                colorHelper.shade(dashboardColors.silverTree, 15),
+                                colorHelper.shade(dashboardColors.gossip, 15),
+                                colorHelper.shade(dashboardColors.white, 15),
+                                colorHelper.shade(dashboardColors.blueStone, 15),
+                                colorHelper.shade(dashboardColors.surfieGreen, 15),
+                                colorHelper.shade(dashboardColors.silverTree, 15),
+                                colorHelper.shade(dashboardColors.gossip, 15),
+                                colorHelper.shade(dashboardColors.white, 15),
+                                colorHelper.shade(dashboardColors.blueStone, 15),
+                                colorHelper.shade(dashboardColors.surfieGreen, 15),
+                                colorHelper.shade(dashboardColors.silverTree, 15),
+                                colorHelper.shade(dashboardColors.gossip, 15),
+                                colorHelper.shade(dashboardColors.white, 15),
+                                colorHelper.shade(dashboardColors.blueStone, 15),
+                                colorHelper.shade(dashboardColors.surfieGreen, 15),
+                                colorHelper.shade(dashboardColors.silverTree, 15),
+                                colorHelper.shade(dashboardColors.gossip, 15),
+                            ],
+                            percentage: []
+                        }
+                    ]
+                }
+                
+                if (R.data.success == 1){
+                    $scope.totalProject = R.data.message;
+                    $scope.countTotalProject = 0;
+                    for (var i=0; i < $scope.totalProject.length; i++) {
+                        $scope.countTotalProject = $scope.countTotalProject + parseInt($scope.totalProject[i]['total_project']);
+                        $scope.doughnutData.labels.push($scope.totalProject[i]['nama_project']);
+                        $scope.doughnutData.datasets[0].data.push($scope.totalProject[i]['total_project']);
+                        $scope.doughnutData.datasets[0].percentage.push($scope.totalProject[i]['total_project']);
+                    }
+                    $scope.loadDoughnut();
+                } else
+                    $scope.totalProject = [];
 
-                    ],
-                    hoverBackgroundColor: [
-                        colorHelper.shade(dashboardColors.white, 15),
-                        colorHelper.shade(dashboardColors.blueStone, 15),
-                        colorHelper.shade(dashboardColors.surfieGreen, 15),
-                        colorHelper.shade(dashboardColors.silverTree, 15),
-                        colorHelper.shade(dashboardColors.gossip, 15)
-                    ],
-                    percentage: [87, 22, 70, 38, 17]
-                }]
+            }, function error(R) { console.log(R.statusText); });
+
         };
-
-        var ctx = document.getElementById('chart-area').getContext('2d');
-        window.myDoughnut = new Chart(ctx, {
-            type: 'doughnut',
-            data: $scope.doughnutData,
-            options: {
-                cutoutPercentage: 64,
-                responsive: true,
-                elements: {
-                    arc: {
-                        borderWidth: 0
+        
+        $scope.getTotalProject();
+        
+        $scope.loadDoughnut = function(){
+            var ctx = document.getElementById('chart-area').getContext('2d');
+            window.myDoughnut = new Chart(ctx, {
+                type: 'doughnut',
+                data: $scope.doughnutData,
+                options: {
+                    cutoutPercentage: 64,
+                    responsive: true,
+                    elements: {
+                        arc: {
+                            borderWidth: 0
+                        }
                     }
                 }
-            }
-        });
+            });
+        };
+
+        
     });
     
 })();
