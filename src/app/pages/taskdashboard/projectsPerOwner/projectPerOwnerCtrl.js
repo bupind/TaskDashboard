@@ -82,7 +82,9 @@
                                 colorHelper.shade(dashboardColors.silverTree, 15),
                                 colorHelper.shade(dashboardColors.gossip, 15),
                             ],
-                            percentage: []
+                            percentage: [],
+                            project_done : [],
+                            total_project : []
                         }
                     ]
                 }
@@ -90,11 +92,15 @@
                 if (R.data.success == 1){
                     $scope.totalProject = R.data.message;
                     $scope.countTotalProject = 0;
+                    $scope.countTotalProjectDone = 0;
                     for (var i=0; i < $scope.totalProject.length; i++) {
                         $scope.countTotalProject = $scope.countTotalProject + parseInt($scope.totalProject[i]['total_project']);
+                        $scope.countTotalProjectDone = $scope.countTotalProjectDone + parseInt($scope.totalProject[i]['project_done']);
                         $scope.doughnutData.labels.push($scope.totalProject[i]['nama_project']);
                         $scope.doughnutData.datasets[0].data.push($scope.totalProject[i]['total_project']);
-                        $scope.doughnutData.datasets[0].percentage.push($scope.totalProject[i]['total_project']);
+                        $scope.doughnutData.datasets[0].percentage.push(parseInt($scope.totalProject[i]['project_done']) / parseInt($scope.totalProject[i]['total_project']) * 100);
+                        $scope.doughnutData.datasets[0].project_done.push($scope.totalProject[i]['project_done']);
+                        $scope.doughnutData.datasets[0].total_project.push($scope.totalProject[i]['total_project']);
                     }
                     $scope.loadDoughnut();
                 } else

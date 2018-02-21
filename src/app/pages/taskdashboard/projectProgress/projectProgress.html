@@ -1,6 +1,6 @@
 
 <ng-repeat ng-repeat="x in listProjectProgress" ui-sref="taskdashboard.detailprojectprogress({id : x.project_id})" class="bxrp">
-    <h5>{{x.nama_project}} <small>{{x.inisial_project}}</small></h5>
+    <h5><span class="pull-right"> <small>by</small> {{x.nama_user}}</span> {{x.nama_project}} <small>{{x.inisial_project}}</small></h5>
     <div class="progress">
         <div class="progress-bar progress-bar-{{ x.progress >= 80 ? 'success' : ( x.progress <= 79 && x.progress >= 50 ) ? 'warning' : x.progress <= 49 ? 'danger' : 'undefined'  }}" role="progressbar" aria-valuenow="{{x.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{x.progress}}%">
             {{x.progress}}% Complete
