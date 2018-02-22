@@ -4,7 +4,7 @@
         <div class="col-lg-4 col-md-12 col-sm-12" ba-panel ba-panel-title="Project(s) Per Owner" ba-panel-class="with-scroll panel-pp">
             <projects-per-owner></projects-per-owner>
         </div>
-        <div class="col-lg-8 col-md-12 col-sm-12" ba-panel ba-panel-title="Project Progress <span></span>" ba-panel-class="with-scroll panel-pp">
+        <div class="col-lg-8 col-md-12 col-sm-12" ba-panel ba-panel-title="Project Progress <a ng-click='showActionBox==true ? showActionBox=false : showActionBox=true' class='pull-right'><span class='glyphicon glyphicon-cog'></span></a>" ba-panel-class="with-scroll panel-pp">
             <div ng-include="'app/pages/taskdashboard/projectProgress/projectProgress.html'"></div>
         </div>
     </div>

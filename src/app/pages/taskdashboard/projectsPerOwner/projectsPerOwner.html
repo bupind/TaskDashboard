@@ -1,22 +1,24 @@
-<div class="channels-block" ng-class="{'transparent': transparent}">
-  <div class="chart-bg"></div>
-  <div class="traffic-chart" id="trafficChart">
-    <div class="canvas-holder">
-      <canvas id="chart-area" width="280" height="280"></canvas>
-      <div class="traffic-text">
-          <small>{{countTotalProjectDone}} / {{countTotalProject | number}} </small> <br>
-          {{countTotalProjectDone / countTotalProject * 100 | number:1}} %
-        <span>Projects</span>
-      </div>
-    </div>
-  </div>
 
+<div class="channels-block" ng-class="{'transparent': transparent}">
+    <div class="chart-bg"></div>
+    <div class="traffic-chart" id="trafficChart">
+        <div class="canvas-holder">
+            <canvas id="chart-area" width="280" height="280"></canvas>
+            <div class="traffic-text">
+                <span style="font-size: 13px;">
+                    <small>{{countTotalProjectDone}}/{{countTotalProject | number}} </small>
+                    <small>Projects</small>
+                </span>
+                <span>{{countTotalProjectDone / countTotalProject * 100 | number:1}}%</span>
+            </div>
+        </div>
+    </div>
     <div class="channels-info">
         <div>
             <div class="channels-info-item" ng-repeat="label in doughnutData.labels"
                  ng-init="i = $index; data = doughnutData.datasets[0]">
                 <div class="legend-color" style="background-color: {{::data.backgroundColor[i]}}"></div>
-                <p>{{::label}}<span class="channel-number"> (<small>{{data.project_done[i]}}/{{data.total_project[i]}}</small>) {{data.percentage[i] | number:1}}%</span></p>
+                <p><a class="cursor-pointer text-white" ng-click="$root.setOwnerSearchGlobal(label)">{{::label}}</a><span class="channel-number"> (<small>{{data.project_done[i]}}/{{data.total_project[i]}}</small>) {{data.percentage[i] | number:1}}%</span></p>
                 <div class="progress progress-sm channel-progress">
                     <div class="progress-bar " role="progressbar"
                          aria-valuenow="{{data.percentage[i] | number:1}}" aria-valuemin="0" aria-valuemax="100"
@@ -27,4 +29,5 @@
         </div>
     </div>
 </div>
+
 

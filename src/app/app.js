@@ -20,4 +20,18 @@ angular.module('BlurAdmin', [
     $provide.value("apiBase", "http://103.76.17.197/api_OrangeScrum/");
     $provide.value("Authorization", "Basic dXNlcm5hbWU6cGFzc3dvcmQ=");
     
+})
+
+.directive('tagInput', function tagInput() {
+    return {
+        restrict: 'A',
+        link: function( $scope, elem, attr) {
+          $(elem).tagsinput({
+            tagClass:  'label label-' + attr.tagInput
+          });
+        }
+    };
 });
+
+
+;
