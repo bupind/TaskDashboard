@@ -20,6 +20,8 @@
       var menuTopValue = 66;
       $scope.hoverElemTop = $event.currentTarget.getBoundingClientRect().top - menuTopValue;
     };
+    
+    baSidebarService.setMenuCollapsed(true);
 
     $scope.$on('$stateChangeSuccess', function () {
       if (baSidebarService.canSidebarBeHidden()) {
