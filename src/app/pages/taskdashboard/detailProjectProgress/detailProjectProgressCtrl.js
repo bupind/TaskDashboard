@@ -7,11 +7,7 @@
 
     angular.module('BlurAdmin.pages.taskdashboard').controller('detailProjectProgressCtrl', function($scope,$http,apiBase,$stateParams){
          
-        
-        
-        
-        
-         $scope.getListProjectProgress = function(d){
+        $scope.getListProjectProgress = function(d){
         
             $http({
                 method      : "GET",
@@ -73,16 +69,7 @@
                 
             }
             
-            
-            
-            
         });
-        
-        
-            
-            
-            
-        
         
     });
 

@@ -1,6 +1,7 @@
 <div class="panel-action-box row" ng-show="showActionBox">
     <div class="col-md-4 ">
-        <input type="text" tag-input="primary" class="input-sm js-tagsinput-owner" ng-model="ownerSearch" ng-change="setOwnerSearch(ownerSearch)" data-role="tagsinput" placeholder="Owner">
+        <input type="text" tag-input="primary" class="input-sm js-tagsinput-owner" ng-model="ownerSearch" ng-change="setOwnerSearch(ownerSearch)" ng-init="setTagsInput(ownerSearch)" data-role="tagsinput" placeholder="Owner">
+        {{ownerSearch}}
     </div>
     <div class="col-md-4 col-md-offset-4">
         <input type="text" class="form-control" placeholder="Search for..." ng-model="pPgSearch">

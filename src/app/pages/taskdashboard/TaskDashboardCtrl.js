@@ -37,8 +37,6 @@
         
         $scope.myFilterUser = function (list) {
             
-            console.log('ownerSearch',$scope.ownerSearch);
-            
             if ($scope.ownerSearch != undefined && $scope.ownerSearch != '') {
                 var a = $scope.ownerSearch.split(",");
                 var b = "";
@@ -48,17 +46,17 @@
                         b += " || ";
                     b += "list.nama_user === '" + a[i] + "'";
                 }
-                console.log('runing',b);
+                
                 return eval(b);
             } else {
                 return true;
             }
-//            return eval("list.nama_user === 'Steven' || list.nama_user === 'dafelina'");
             
         };
         
         $scope.setOwnerSearch = function(a){
             $scope.ownerSearch = a;
+            console.log('ng-init',a);
         };
         
         $rootScope.setOwnerSearchGlobal = function(a){
@@ -66,6 +64,15 @@
             $('.js-tagsinput-owner').tagsinput('add', a);
             $scope.showActionBox = true;
         };
+        
+        $scope.setTagsInput = function(a){
+            $(document).ready(function(){
+                $('.js-tagsinput-owner').tagsinput('add', a);
+                console.log('Owner',a);
+            });
+        };
+        
+        
         
         
     });
