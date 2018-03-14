@@ -91,5 +91,42 @@ html {
             
         }
         
+        .label {
+            border-radius: 100px;
+        }
+        
+        .comment-list {
+            .comment-area {
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.2196078431372549);
+                border-radius: 5px;
+                margin: 5px 0;
+                position: relative;
+                
+                .cdate {
+                    font-size: 8px;
+                    font-style: italic;
+                    position: absolute;
+                    top: 5px;
+                    right: 12px;
+                }
+                
+                .comment-area-attr {
+                    text-align: right;
+                    font-size: 11px;
+                    
+                    
+                    .label {
+                        font-size: 80%;
+                        /*vertical-align: top;*/
+                    }
+                }
+            }
+        }
+        
+        .cd-timeline-content .cd-date {
+            float: none;
+        }
+        
     }
 }

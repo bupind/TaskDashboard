@@ -17,7 +17,8 @@ angular.module('BlurAdmin', [
   'BlurAdmin.pages'
 ]).config(function($provide){
     
-    $provide.value("apiBase", "http://103.76.17.197/api_OrangeScrum/");
+//    $provide.value("apiBase", "http://103.76.17.197/api_OrangeScrum/");
+    $provide.value("apiBase", "http://192.168.10.137/api_OrangeScrum/");
     $provide.value("Authorization", "Basic dXNlcm5hbWU6cGFzc3dvcmQ=");
     
 })

@@ -13,7 +13,23 @@
             <div class="cd-timeline-content {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}">
                 <h5>{{x.list_task}}</h5>
                 <p>{{x.nama_project}}</p>
-                <span class="cd-date">{{x.status}}</span>
+                <span class="cd-date">{{x.status}} <br/><span class="label label-{{x.percent <= 100 && x.percent >= 80 ? 'primary' : ( x.percent <= 79 && x.percent >= 70 ) ? 'success' : ( x.percent <= 69 && x.percent >= 40 ) ? 'warning' : ( x.percent <= 39 && x.percent >= 0 ) ? 'danger' : '' }}">{{x.percent}}% complete</span></span>
+                <div ng-if="x.comment.length > 0">
+                    <hr>
+                    {{x.comment.length}} Comment(s)
+                </div>
+                <div class="comment-list">
+                    <div class="comment-area" ng-repeat="y in x.comment">
+                        <div>
+                            {{y.message | plainText}}
+                            <span class="cdate pull-right">{{y.date | date : 'MMM d HH:mm'}}</span>
+                        </div>
+                        <div class="comment-area-attr">
+                            <span class="pull-left">by {{y.name}}</span>
+                            <span class="label label-{{y.completed_task <= 100 && y.completed_task >= 80 ? 'primary' : ( y.completed_task <= 79 && y.completed_task >= 70 ) ? 'success' : ( y.completed_task <= 69 && y.completed_task >= 40 ) ? 'warning' : ( y.completed_task <= 39 && y.completed_task >= 0 ) ? 'danger' : '' }}">{{y.completed_task}}% complete</span> 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
