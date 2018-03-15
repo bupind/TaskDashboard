@@ -6,7 +6,17 @@
     'use strict';
 
     angular.module('BlurAdmin.pages.taskdashboard').controller('detailProjectProgressCtrl', function($scope,$http,apiBase,$stateParams){
-         
+        
+        $scope.showCommentBtn = function(a){
+            if (angular.element( document.querySelector( '.showComment_'+a ) ).hasClass('hide')){
+                angular.element( document.querySelector( '.showComment_'+a ) ).removeClass('hide');
+                angular.element( document.querySelector( '.showComment_hr_'+a ) ).removeClass('hide');
+            } else {
+                angular.element( document.querySelector( '.showComment_'+a ) ).addClass('hide');
+                angular.element( document.querySelector( '.showComment_hr_'+a ) ).addClass('hide');
+            }
+        };
+        
         $scope.getListProjectProgress = function(d){
         
             $http({

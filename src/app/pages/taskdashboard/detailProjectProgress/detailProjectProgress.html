@@ -10,15 +10,15 @@
                     
                 </div>
             </div>
-            <div class="cd-timeline-content {{x.status == 'Resolve' ? 'warning' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}">
+            <div class="cd-timeline-content {{x.status == 'Resolve' ? 'danger' : x.status == 'NEW' ? 'primary' : x.status == 'Close' ? 'danger' : x.status == 'In Progress' ? 'warning' : ''}}">
                 <h5>{{x.list_task}}</h5>
                 <p>{{x.nama_project}}</p>
                 <span class="cd-date">{{x.status}} <br/><span class="label label-{{x.percent <= 100 && x.percent >= 80 ? 'primary' : ( x.percent <= 79 && x.percent >= 70 ) ? 'success' : ( x.percent <= 69 && x.percent >= 40 ) ? 'warning' : ( x.percent <= 39 && x.percent >= 0 ) ? 'danger' : '' }}">{{x.percent}}% complete</span></span>
                 <div ng-if="x.comment.length > 0">
-                    <hr>
-                    {{x.comment.length}} Comment(s)
+                    <span class="pull-right cursor-pointer" ng-click="showCommentBtn($index)">{{x.comment.length}} Comment(s) <i class="ion-ios-arrow-down"></i></span><br>
+                    <hr style="margin-top:0" class="hide showComment_hr_{{$index}}">
                 </div>
-                <div class="comment-list">
+                <div class="comment-list hide showComment_{{$index}}">
                     <div class="comment-area" ng-repeat="y in x.comment">
                         <div>
                             {{y.message | plainText}}
